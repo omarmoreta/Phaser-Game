@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 var cursors;
 var player;
+
 export default class MyGame extends Phaser.Scene
 {
     
@@ -25,9 +26,11 @@ export default class MyGame extends Phaser.Scene
         "troll-enemy",
         "src/img/mobs/troll-enemy.png",
         "src/img/mobs/troll-enemy_atlas.json");
+    // PLAYER AND ANIMATION
     this.load.atlas('knight', 
     'src/img/mc/knight.png',
     'src/img/mc/knight_atlas.json');
+    
     }
 
     create ()
@@ -40,21 +43,55 @@ export default class MyGame extends Phaser.Scene
     // MOB
     const troll = this.physics.add.image(240, 50, "troll-enemy");
     troll.setCollideWorldBounds(true);
-    // PLAYER
+    // PLAYER & work with blockedlayer
+    const knight = this.physics.add.sprite(225,343, 'knight');
     cursors = this.input.keyboard.createCursorKeys();
-    player = this.physics.add.image(225,343, 'knight');
-    player.setCollideWorldBounds(true);
-    // troll.collider(troll, blockedLayer); //doesnt work rn but not sure if will need later
-    // Create animations for the troll to walk and idle using the frames in the atlas
-    // Set troll to roam around freely, then chase and attack the player when he comes close
+    player = knight;
+    knight.setCollideWorldBounds(true);
+    this.knightAnims();
+    knight.setScale(4);
+    knight.play("idle")
 
+
+       
+
+    }
+    
+    // PLAYER ANIMATIONS
+   
+    knightAnims(){
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNames('knight',{
+                start:0,
+                end: 3,
+                zeroPad: 1,
+                prefix: "knight_idle_",
+            }),
+            frameRate: 8,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: 'run',
+            frames: this.anims.generateFrameNames("knight", {
+                start: 0,
+                end: 3,
+                zeroPad: 1,
+                prefix: "knight_run_",
+            }),
+            frameRate: 8,
+            repeat: 0,
+        });
     }
     update(){
     player.setVelocity(0);
+   // knight.play("idle");
+    
 
     if (cursors.left.isDown)
     {
     player.setVelocityX(-100);
+    // knight.play("run");
     }
     else if (cursors.right.isDown)
     {
@@ -69,7 +106,5 @@ export default class MyGame extends Phaser.Scene
     {
     player.setVelocityY(100);
     }
-
     }
 }
-
