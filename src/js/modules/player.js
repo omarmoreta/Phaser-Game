@@ -60,17 +60,18 @@ export default class Player extends Entity {
 
     this.body.velocity.normalize().scale(speed)
 
-    if (keys.up.isDown ) {
-        this.anims.startAnimation('run', true)
+    if (keys.up.isDown || keys.w.isDown || keys.down.isDown || keys.s.isDown || keys.left.isDown || keys.a.isDown || keys.right.isDown || keys.d.isDown ) {
+        this.anims.play('run', true)
     } 
 
-    //|| keys.w.isDown || keys.down.isDown || keys.s.isDown || keys.left.isDown || keys.a.isDown || keys.right.isDown || keys.d.isDown
+    //
     
     if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
         this.anims.play('idle', true)
-    } else{
-        this.anims.stop()
     }
+    // else{
+    //     this.anims.stop()
+    // }
 
     }
 }

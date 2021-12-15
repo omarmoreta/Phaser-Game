@@ -5,6 +5,7 @@ export default class BootScene extends Phaser.Scene {
         super('Boot');
     }
     preload(){
+        // MAIN CHARACTER ASSETS
         this.load.atlas('knight', 
         'src/img/mc/knight.png',
         'src/img/mc/knight_atlas.json');
