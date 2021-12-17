@@ -5,7 +5,7 @@ export default class Player extends Entity {
     constructor(scene,x,y,textureKey)
     {
         super(scene,x,y,textureKey, 'Player')
-        this.facing = false;
+        this.facingLeft = false;
         const anims = scene.anims
         anims.create({
             key: 'idleright',
@@ -14,7 +14,7 @@ export default class Player extends Entity {
                 end: 3,
                 prefix: "knight_idle_r",
             }),
-            frameRate: 8,
+            frameRate: 7,
             repeat: -1,
         });
         anims.create({
@@ -24,7 +24,7 @@ export default class Player extends Entity {
                 end: 3,
                 prefix: "knight_idle_l",
             }),
-            frameRate: 8,
+            frameRate: 7,
             repeat: -1,
         });
         anims.create({
@@ -34,7 +34,7 @@ export default class Player extends Entity {
                 end: 3,
                 prefix: "knight_run_r",
             }),
-            frameRate: 8,
+            frameRate: 7,
             repeat: -1,
         });
         anims.create({
@@ -44,7 +44,7 @@ export default class Player extends Entity {
                 end: 3,
                 prefix: "knight_run_l",
             }),
-            frameRate: 8,
+            frameRate: 7,
             repeat: -1,
         });
         const {LEFT,RIGHT,UP,DOWN,W,A,S,D} = Phaser.Input.Keyboard.KeyCodes
@@ -63,47 +63,50 @@ export default class Player extends Entity {
     {
     const {keys} = this
     const speed = 100
-    const previousVelocity = this.body.velocity.clone()
     this.body.setVelocity(0)
 
+        // GO LEFT OR RIGHT INPUT
     if (keys.left.isDown || keys.a.isDown ) {
         this.body.setVelocityX(-speed)
         // console.log('Hi')
-    } else if (keys.right.isDown || keys.d.isDown) {
-        this.body.setVelocityX(speed)
-        this.anims.flipY = true
-    }
+        } else if (keys.right.isDown || keys.d.isDown) {
+            this.body.setVelocityX(speed)
+        }
 
+        // GO UP OR DOWN INPUT
     if (keys.up.isDown || keys.w.isDown) {
         this.body.setVelocityY(-speed)
-    } else if (keys.down.isDown || keys.s.isDown) {
+        }else if (keys.down.isDown || keys.s.isDown) {
         this.body.setVelocityY(speed)
-    }
+        }
 
+        // ADJUSTS SIDEWAY SPEED
     this.body.velocity.normalize().scale(speed)
 
         // ANIMATION ORIENTATION !
+        // IF THE CHARACTER IS GOING LEFT OR RIGHT
     if (keys.left.isDown || keys.a.isDown) {
-        this.facing = true
+        this.facingLeft = true
         this.anims.play('runleft', true)
-    } else if (keys.right.isDown || keys.d.isDown) {
-        this.facing = false
+        } else if (keys.right.isDown || keys.d.isDown) {
+        this.facingLeft = false
         this.anims.play('runright', true)
-    } 
-
+        } 
+        // IF THE CHARACTER IS GOING UP OR DOWN
     if(this.body.velocity.y !== 0){
-        if(this.facing){
+        if(this.facingLeft){
             this.anims.play('runleft', true)
-        }else{
+            }else{
             this.anims.play('runright', true)
-        }
+            }
     }
+        // IF THE CHARACTER IS NOT MOVING, GO BACK TO IDLE 
     if(this.body.velocity.y === 0 && this.body.velocity.x === 0){
-        if(this.facing){
+        if(this.facingLeft){
             this.anims.play('idleleft', true)
-        }else{
+            }else{
             this.anims.play('idleright', true)
-        }
+            }
     }
    
     }
