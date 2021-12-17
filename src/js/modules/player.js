@@ -5,23 +5,44 @@ export default class Player extends Entity {
     constructor(scene,x,y,textureKey)
     {
         super(scene,x,y,textureKey, 'Player')
+        this.facing = false;
         const anims = scene.anims
         anims.create({
-            key: 'idle',
+            key: 'idleright',
             frames: anims.generateFrameNames(this.textureKey,{
                 start:0,
                 end: 3,
-                prefix: "knight_idle_",
+                prefix: "knight_idle_r",
             }),
             frameRate: 8,
             repeat: -1,
         });
         anims.create({
-            key: 'run',
+            key: 'idleleft',
             frames: anims.generateFrameNames(this.textureKey, {
                 start: 0,
                 end: 3,
-                prefix: "knight_run_",
+                prefix: "knight_idle_l",
+            }),
+            frameRate: 8,
+            repeat: -1,
+        });
+        anims.create({
+            key: 'runright',
+            frames: anims.generateFrameNames(this.textureKey, {
+                start: 0,
+                end: 3,
+                prefix: "knight_run_r",
+            }),
+            frameRate: 8,
+            repeat: -1,
+        });
+        anims.create({
+            key: 'runleft',
+            frames: anims.generateFrameNames(this.textureKey, {
+                start: 0,
+                end: 3,
+                prefix: "knight_run_l",
             }),
             frameRate: 8,
             repeat: -1,
@@ -42,7 +63,7 @@ export default class Player extends Entity {
     {
     const {keys} = this
     const speed = 100
-
+    const previousVelocity = this.body.velocity.clone()
     this.body.setVelocity(0)
 
     if (keys.left.isDown || keys.a.isDown ) {
@@ -50,6 +71,7 @@ export default class Player extends Entity {
         // console.log('Hi')
     } else if (keys.right.isDown || keys.d.isDown) {
         this.body.setVelocityX(speed)
+        this.anims.flipY = true
     }
 
     if (keys.up.isDown || keys.w.isDown) {
@@ -60,18 +82,29 @@ export default class Player extends Entity {
 
     this.body.velocity.normalize().scale(speed)
 
-    if (keys.up.isDown || keys.w.isDown || keys.down.isDown || keys.s.isDown || keys.left.isDown || keys.a.isDown || keys.right.isDown || keys.d.isDown ) {
-        this.anims.play('run', true)
+        // ANIMATION ORIENTATION !
+    if (keys.left.isDown || keys.a.isDown) {
+        this.facing = true
+        this.anims.play('runleft', true)
+    } else if (keys.right.isDown || keys.d.isDown) {
+        this.facing = false
+        this.anims.play('runright', true)
     } 
 
-    //
-    
-    if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
-        this.anims.play('idle', true)
+    if(this.body.velocity.y !== 0){
+        if(this.facing){
+            this.anims.play('runleft', true)
+        }else{
+            this.anims.play('runright', true)
+        }
     }
-    // else{
-    //     this.anims.stop()
-    // }
-
+    if(this.body.velocity.y === 0 && this.body.velocity.x === 0){
+        if(this.facing){
+            this.anims.play('idleleft', true)
+        }else{
+            this.anims.play('idleright', true)
+        }
+    }
+   
     }
 }

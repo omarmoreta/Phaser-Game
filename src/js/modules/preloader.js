@@ -13,4 +13,7 @@ export default class PreloaderScene extends Phaser.Scene {
     create(){
         this.scene.start('thisGame');   // once main title is done, it will replace thisGame.
     }
+    update(){
+
+    }
 }

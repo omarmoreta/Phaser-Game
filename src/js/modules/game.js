@@ -28,13 +28,13 @@ export default class MyGame extends Phaser.Scene
     blockedLayer.setCollisionByExclusion(-1, true);
 
     // PLAYER
-    this.player = new Player(this,225,343, 'knight').setScale(4)
+    this.player = new Player(this,225,343, 'knight').setScale(1)
     this.player.body.setCollideWorldBounds(true)
 
     // TROLLS
-    this.troll = new Troll(this,360, 50, "troll-enemy").setScale(3)
-    this.troll = new Troll(this,90, 50, "troll-enemy").setScale(3)
-    this.troll = new Troll(this,240, 50, "troll-enemy").setScale(3)
+    this.troll = new Troll(this,360, 50, "troll-enemy").setScale(1)
+    this.troll = new Troll(this,90, 50, "troll-enemy").setScale(1)
+    this.troll = new Troll(this,240, 50, "troll-enemy").setScale(1.5)
     this.troll.body.setCollideWorldBounds(true);
     }
 
