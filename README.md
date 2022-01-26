@@ -1,7 +1,7 @@
 
 # Deployment
 
-This game is currently not deployed and in development by Omar Moreta, Aaron Lu and German Almonte
+This game is currently not deployed and in development by Omar Moreta, and German Almonte
 
 ## What is it?
 It's a top down RPG dungeon crawler made with Phaser 3!
