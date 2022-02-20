@@ -16,4 +16,6 @@ export const config = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   pixelArt: true,
+  title: '2D Dungeon Crawler',
+  version: '1.0',
 };
