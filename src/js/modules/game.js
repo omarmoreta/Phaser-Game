@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll.js";
+// import HealthBar from "./healthbar.js";
 
 export default class MyGame extends Phaser.Scene {
   constructor() {
@@ -14,6 +15,8 @@ export default class MyGame extends Phaser.Scene {
     this.keys;
     this.troll;
     this.cameras;
+    // this.HealthBar;
+
   }
 
   create() {
@@ -47,9 +50,13 @@ export default class MyGame extends Phaser.Scene {
     blockedLayer.setCollisionByProperty({ collide: true });
     this.physics.add.collider(this.player, blockedLayer);
     this.physics.add.collider(this.player, this.troll);
+
+    // HEALTHBAR & INTERFACE
+    // this.HealthBar = new HealthBar(this,this.player.x,this.player.y,100);
   }
 
   update(time, delta) {
     this.player.update();
+
   }
 }

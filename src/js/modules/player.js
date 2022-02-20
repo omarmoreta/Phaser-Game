@@ -2,9 +2,12 @@ import Phaser from "phaser";
 import Entity from "./entity.js";
 
 export default class Player extends Entity {
-  constructor(scene, x, y, textureKey) {
+  constructor(scene, x, y, textureKey, health) {
     super(scene, x, y, textureKey, "Player");
     this.facingLeft = false;
+    this.health = health;
+
+
     const anims = scene.anims;
     anims.create({
       key: "idleright",
