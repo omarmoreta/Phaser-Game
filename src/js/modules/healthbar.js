@@ -28,8 +28,8 @@ export default class HealthBar {
     draw(){
         this.bar.clear();
         // bg
-        this.bar.fillStyle(0x000000);
-        this.bar.fillRect(this.x, this.y, 104, 16);
+        // this.bar.fillStyle(0x000000);
+        // this.bar.fillRect(this.x, this.y, 104, 16);
         // health
         // this.bar.fillStyle(0xffffff);
         // this.bar.fillRect(this.x + 2, this.y + 2, 4, 4);
@@ -40,7 +40,7 @@ export default class HealthBar {
         }
         else
         {
-            this.bar.fillStyle(0x1AD584);
+            this.bar.fillStyle(0x72D6CE);
         }
 
         var d = Math.floor(this.p * this.value);
