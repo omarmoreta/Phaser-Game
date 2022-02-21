@@ -39,14 +39,18 @@ export default class MyGame extends Phaser.Scene {
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
 
     // TROLLS
-    this.troll = new Troll(this, 360, 50, "troll-enemy").setScale(1);
-    this.troll = new Troll(this, 90, 50, "troll-enemy").setScale(1);
+    this.troll1 = new Troll(this, 360, 50, "troll-enemy").setScale(1);
+    this.troll1.body.setCollideWorldBounds(true).setImmovable(true);
+    this.troll2 = new Troll(this, 90, 50, "troll-enemy").setScale(1);
+    this.troll2.body.setCollideWorldBounds(true).setImmovable(true);
     this.troll = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
-    this.troll.body.setCollideWorldBounds(true);
+    this.troll.body.setCollideWorldBounds(true).setImmovable(true);
 
     blockedLayer.setCollisionByProperty({ collide: true });
     this.physics.add.collider(this.player, blockedLayer);
     this.physics.add.collider(this.player, this.troll);
+    this.physics.add.collider(this.player, this.troll1);
+    this.physics.add.collider(this.player, this.troll2);
 
   }
 

@@ -17,5 +17,5 @@ export const config = {
   },
   pixelArt: true,
   title: '2D Dungeon Crawler',
-  version: '1.0',
+  version: 'Beta 1.0',
 };

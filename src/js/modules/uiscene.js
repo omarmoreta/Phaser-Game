@@ -24,5 +24,11 @@ export default class UI extends Phaser.Scene {
             'Lives: ' + this.data.get('lives'),
             'Score: ' + this.data.get('score')
         ]);
+    var control = this.add.text(310, 210, '', { font: '8px Verdana', fill: '#FFFFFF'});text.alpha = 0.8;
+
+        control.setText([
+            '[SPACE] to pause'
+        ]);
+
     }
 }
