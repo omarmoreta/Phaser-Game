@@ -1,17 +1,43 @@
 import Phaser from "phaser";
 import HealthBar from "./healthbar.js";
 
+let music;
+
 export default class UI extends Phaser.Scene {
   constructor() {
     super("Interface");
+    this.paused = false;
   }
 
   preload() {
     this.HealthBar;
+    this.load.image("pauseButton", "../../src/img/musicButton/playPause.png");
+    this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
   }
   create() {
+    // MUSIC
+    music = this.sound.add("backgroundMusic", {
+      volume: 0.2,
+      loop: true,
+    });
+    music.play();
+    // MUSIC BUTTON
+    this.add
+      .image(380, 15, "pauseButton")
+      .setInteractive()
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+        if (!this.paused) {
+          this.paused = true;
+          music.pause();
+        } else {
+          this.paused = false;
+          music.resume();
+        }
+      });
+
     // HEALTHBAR
     this.HealthBar = new HealthBar(this, 5, 5, 100);
+
     // LEVEL INFO
     this.data.set("lives", 1);
     this.data.set("level", 1);

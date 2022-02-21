@@ -16,7 +16,6 @@ export default class MyGame extends Phaser.Scene {
     this.keys;
     this.troll;
     this.cameras;
-    this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
   }
 
   create() {
@@ -52,13 +51,6 @@ export default class MyGame extends Phaser.Scene {
     this.physics.add.collider(this.player, this.trollRight);
     this.physics.add.collider(this.player, this.trollLeft);
     this.physics.add.collider(this.player, this.trollBig);
-
-    // MUSIC
-    music = this.sound.add("backgroundMusic", {
-      volume: 0.6,
-      loop: true,
-    });
-    music.play();
   }
 
   update(time, delta) {
