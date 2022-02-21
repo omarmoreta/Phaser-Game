@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll.js";
 
+let music;
+
 export default class MyGame extends Phaser.Scene {
   constructor() {
     super("thisGame");
@@ -14,6 +16,7 @@ export default class MyGame extends Phaser.Scene {
     this.keys;
     this.troll;
     this.cameras;
+    this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
   }
 
   create() {
@@ -23,8 +26,6 @@ export default class MyGame extends Phaser.Scene {
     const backgroundLayer = map.createLayer("Background", tileset, 0, 0);
     const blockedLayer = map.createLayer("Blocked", tileset, 0, 0);
     const overheadLayer = map.createLayer("Overhead", tileset, 0, 0);
-
-    // this.player.setDepth(10);
     overheadLayer.setDepth(20);
 
     // CAMERA
@@ -39,23 +40,28 @@ export default class MyGame extends Phaser.Scene {
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
 
     // TROLLS
-    this.troll1 = new Troll(this, 360, 50, "troll-enemy").setScale(1);
-    this.troll1.body.setCollideWorldBounds(true).setImmovable(true);
-    this.troll2 = new Troll(this, 90, 50, "troll-enemy").setScale(1);
-    this.troll2.body.setCollideWorldBounds(true).setImmovable(true);
-    this.troll = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
-    this.troll.body.setCollideWorldBounds(true).setImmovable(true);
+    this.trollRight = new Troll(this, 360, 50, "troll-enemy").setScale(1);
+    this.trollRight.body.setCollideWorldBounds(true).setImmovable(true);
+    this.trollLeft = new Troll(this, 90, 50, "troll-enemy").setScale(1);
+    this.trollLeft.body.setCollideWorldBounds(true).setImmovable(true);
+    this.trollBig = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
+    this.trollBig.body.setCollideWorldBounds(true).setImmovable(true);
 
     blockedLayer.setCollisionByProperty({ collide: true });
     this.physics.add.collider(this.player, blockedLayer);
-    this.physics.add.collider(this.player, this.troll);
-    this.physics.add.collider(this.player, this.troll1);
-    this.physics.add.collider(this.player, this.troll2);
+    this.physics.add.collider(this.player, this.trollRight);
+    this.physics.add.collider(this.player, this.trollLeft);
+    this.physics.add.collider(this.player, this.trollBig);
 
+    // MUSIC
+    music = this.sound.add("backgroundMusic", {
+      volume: 0.6,
+      loop: true,
+    });
+    music.play();
   }
 
   update(time, delta) {
     this.player.update();
-
   }
 }
