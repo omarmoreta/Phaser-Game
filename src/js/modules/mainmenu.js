@@ -32,6 +32,7 @@ export default class MainmenuScene extends Phaser.Scene {
 
         if (spacek.isDown) {
             this.scene.start('thisGame');
-            this.scene.start('interface');
+            this.scene.start('Interface');
+            this.scene.start('Pause')
         }};
 }

@@ -28,11 +28,11 @@ export default class HealthBar {
     draw(){
         this.bar.clear();
         // bg
-        // this.bar.fillStyle(0x000000);
-        // this.bar.fillRect(this.x, this.y, 104, 16);
+        this.bar.fillStyle(0x000000);
+        this.bar.fillRect(this.x +0.5, this.y +1, 103, 15);
         // health
-        // this.bar.fillStyle(0xffffff);
-        // this.bar.fillRect(this.x + 2, this.y + 2, 4, 4);
+        this.bar.fillStyle(0xffffff);
+        this.bar.fillRect(this.x + 2, this.y + 2, 4, 4);
 
         if (this.value < 30)
         {

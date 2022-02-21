@@ -4,7 +4,7 @@ import HealthBar from './healthbar.js'
 
 export default class UI extends Phaser.Scene {
     constructor(){
-        super('interface');
+        super('Interface');
     }
 
     preload(){
@@ -17,7 +17,7 @@ export default class UI extends Phaser.Scene {
     this.data.set('lives', 1);
     this.data.set('level', 1);
     this.data.set('score', 2000);
-    var text = this.add.text(5, 180, '', { font: '12px Verdana', fill: '#72D6CE' , background: '#fffff'});
+    var text = this.add.text(5, 180, '', { font: '12px Verdana', fill: '#FFFFFF'});text.alpha = 0.8;
 
         text.setText([
             'Level: ' + this.data.get('level'),
