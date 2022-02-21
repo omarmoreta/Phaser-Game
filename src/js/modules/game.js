@@ -8,8 +8,6 @@ export default class MyGame extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("tiles", "./src/img/map/tf_jungle_tileset.png");
-    this.load.tilemapTiledJSON("map", "./src/tilemaps/Map.json");
     this.player;
     this.keys;
     this.troll;

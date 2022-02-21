@@ -10,7 +10,6 @@ export default class UI extends Phaser.Scene {
   }
 
   preload() {
-    this.HealthBar;
   }
   create() {
     // MUSIC
