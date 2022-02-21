@@ -14,7 +14,7 @@ export default class PauseScreen extends Phaser.Scene {
     var text = this.add.text(screenCenterX, screenCenterY, '', { font: '12px Verdana', fill: '#ffffff' , background: '#fffff'}).setOrigin(0.5);
 
         text.setText([
-            "---------PAUSED----------",
+            "----------PAUSED---------",
             "PRESS [ESC] TO RESUME"
         ]);
     }

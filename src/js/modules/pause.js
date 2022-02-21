@@ -1,4 +1,4 @@
-import Phaser, { Display } from 'phaser'
+import Phaser from 'phaser'
 
 var pausekey;
 var resumekey;
@@ -20,12 +20,10 @@ export default class PauseScene extends Phaser.Scene {
         if (pausekey.isDown && this.paused === false) {
             this.paused = true;
             this.scene.pause('thisGame');
-            this.scene.pause('Interface');
             this.scene.launch('PScreen');}
         else if(resumekey.isDown && this.paused === true){
             this.paused = false;
             this.scene.resume('thisGame');
-            this.scene.resume('Interface');
             this.scene.stop('PScreen');}
         };
 

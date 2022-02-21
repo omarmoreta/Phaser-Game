@@ -31,7 +31,7 @@ export default class HealthBar {
         this.bar.fillStyle(0x000000);
         this.bar.fillRect(this.x +0.5, this.y +1, 103, 15);
         // health
-        this.bar.fillStyle(0xffffff);
+        this.bar.fillStyle(0x000000);
         this.bar.fillRect(this.x + 2, this.y + 2, 4, 4);
 
         if (this.value < 30)
@@ -40,7 +40,7 @@ export default class HealthBar {
         }
         else
         {
-            this.bar.fillStyle(0x72D6CE);
+            this.bar.fillStyle(0xDD636E);
         }
 
         var d = Math.floor(this.p * this.value);

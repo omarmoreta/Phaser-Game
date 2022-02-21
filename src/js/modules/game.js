@@ -2,8 +2,6 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll.js";
 
-let music;
-
 export default class MyGame extends Phaser.Scene {
   constructor() {
     super("thisGame");

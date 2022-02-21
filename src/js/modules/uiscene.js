@@ -11,8 +11,6 @@ export default class UI extends Phaser.Scene {
 
   preload() {
     this.HealthBar;
-    this.load.image("pauseButton", "../../src/img/musicButton/pause-play.png");
-    this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
   }
   create() {
     // MUSIC
