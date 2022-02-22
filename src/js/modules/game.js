@@ -15,6 +15,8 @@ export default class MyGame extends Phaser.Scene {
   }
 
   create() {
+    // FADE IN
+    this.cameras.main.fadeIn(1000, 0, 0, 0)
     // MAP
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("tf_jungle_tileset", "tiles");

@@ -77,8 +77,12 @@ export default class BootScene extends Phaser.Scene {
         this.load.image("pauseButton", "../../src/img/musicButton/pause-play.png");
         this.load.audio("maintitlemusic", "../../src/audio/maintitlemusic.mp3");
         this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
+        this.load.audio("evil", "../../src/audio/evil.mp3")
     }
     create(){
-        this.scene.start('Mainmenu');
+    this.cameras.main.fadeOut(1000, 0, 0, 0);
+	this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+		this.scene.start('Mainmenu');
+	})
     }
 }

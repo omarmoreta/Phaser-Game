@@ -12,6 +12,8 @@ export default class UI extends Phaser.Scene {
   preload() {
   }
   create() {
+    // FADE IN
+    this.cameras.main.fadeIn(1000, 0, 0, 0)
     // MUSIC
     music = this.sound.add("backgroundMusic", {
       volume: 0.06,
@@ -38,7 +40,7 @@ export default class UI extends Phaser.Scene {
     // LEVEL INFO
     this.data.set("lives", 1);
     this.data.set("level", 1);
-    this.data.set("score", 2000);
+    this.data.set("score", 0);
     var text = this.add.text(5, 180, "", {
       font: "12px Verdana",
       fill: "#FFFFFF",
