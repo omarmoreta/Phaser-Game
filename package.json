@@ -4,8 +4,9 @@
   "description": "A Phaser 3 Project Template",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "build": "parcel build src/index.html --public-url ./ --no-source-maps ",
+    "deploy": "gh-pages -d dist",
+    "start": "parcel serve ./index.html"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,9 @@
   },
   "dependencies": {
     "express": "^4.17.3",
+    "gh-pages": "^3.2.3",
     "phaser": "^3.50.0",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "uniq": "^1.0.1"
   }
 }

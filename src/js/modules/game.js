@@ -2,18 +2,12 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll.js";
 
+let walksfx;
+
 export default class MyGame extends Phaser.Scene {
   constructor() {
     super("thisGame");
   }
-
-  preload() {
-    this.player;
-    this.keys;
-    this.troll;
-    this.cameras;
-  }
-
   create() {
     // FADE IN
     this.cameras.main.fadeIn(1000, 0, 0, 0)
@@ -35,6 +29,7 @@ export default class MyGame extends Phaser.Scene {
     this.player = new Player(this, 225, 343, "knight").setScale(1);
     this.player.body.setCollideWorldBounds(true);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
+    // walksfx = this.sound.add("walking", {volume: 1.0, loop: true,})
 
     // TROLLS
     this.trollRight = new Troll(this, 360, 50, "troll-enemy").setScale(1);

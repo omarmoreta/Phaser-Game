@@ -1,4 +1,16 @@
 import Phaser from 'phaser'
+import logo1 from '../img/logo.png'
+import knight1 from '../img/mc/knight.png'
+import knight2 from '../img/mc/knight_atlas.json'
+import ogre1 from '../img/mobs/troll-enemy.png'
+import ogre2 from '../img/mobs/troll-enemy_atlas.json'
+import map1 from '../img/map/tf_jungle_tileset.png'
+import map2 from '../tilemaps/Map.json'
+import pausebutton from '../img/musicButton/pause-play.png'
+import mainmusic from '../audio/maintitlemusic.mp3'
+import bgmusic from '../audio/backgroundMusic.wav'
+import evilsfx from '../audio/evil.mp3'
+import walksfx from '../audio/walk.wav'
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
@@ -57,27 +69,28 @@ export default class BootScene extends Phaser.Scene {
 
         // MAIN CHARACTER ASSETS
         this.load.atlas('knight',
-        'src/img/mc/knight.png',
-        'src/img/mc/knight_atlas.json');
+        knight1,
+        knight2);
         // ENEMY ASSETS
         this.load.atlas(
         "troll-enemy",
-        "src/img/mobs/troll-enemy.png",
-        "src/img/mobs/troll-enemy_atlas.json");
+        ogre1,
+        ogre2);
         // MAP ASSETS
-        this.load.image("tiles", "src/img/map/tf_jungle_tileset.png");
-        this.load.tilemapTiledJSON("map", "src/tilemaps/Map.json");
+        this.load.image("tiles", map1);
+        this.load.tilemapTiledJSON("map", map2);
         // CAMERA ASSETS
         this.cameras.main.setBackgroundColor(0x9900e3);
         this.cameras.main.height = 256;
         this.cameras.main.width = 336;
         this.cameras.main.setPosition(32,32);
         // SFX & UI ASSETS
-        this.load.image('logo', 'src/img/logo.png');
-        this.load.image("pauseButton", "../../src/img/musicButton/pause-play.png");
-        this.load.audio("maintitlemusic", "../../src/audio/maintitlemusic.mp3");
-        this.load.audio("backgroundMusic", "../../src/audio/backgroundMusic.wav");
-        this.load.audio("evil", "../../src/audio/evil.mp3")
+        this.load.image('logo', logo1);
+        this.load.image("pauseButton", pausebutton);
+        this.load.audio("maintitlemusic", mainmusic);
+        this.load.audio("backgroundMusic", bgmusic);
+        this.load.audio("evil", evilsfx)
+        this.load.audio("walking", walksfx)
     }
     create(){
     this.cameras.main.fadeOut(1000, 0, 0, 0);

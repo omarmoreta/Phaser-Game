@@ -63,14 +63,6 @@ export default class Player extends Entity {
     });
   }
 
-  preload() {
-    this.player;
-  }
-
-  create() {
-    this.player.setDepth(10);
-  }
-
   update() {
     const { keys } = this;
     const speed = 100;
@@ -79,16 +71,20 @@ export default class Player extends Entity {
     // GO LEFT OR RIGHT INPUT
     if (keys.left.isDown || keys.a.isDown) {
       this.body.setVelocityX(-speed);
+      this.walking = true;
       // console.log('Hi')
     } else if (keys.right.isDown || keys.d.isDown) {
       this.body.setVelocityX(speed);
+      this.walking = true;
     }
 
     // GO UP OR DOWN INPUT
     if (keys.up.isDown || keys.w.isDown) {
       this.body.setVelocityY(-speed);
+      this.walking = true;
     } else if (keys.down.isDown || keys.s.isDown) {
       this.body.setVelocityY(speed);
+      this.walking = true;
     }
 
     // ADJUSTS SIDEWAY SPEED
@@ -99,24 +95,30 @@ export default class Player extends Entity {
     if (keys.left.isDown || keys.a.isDown) {
       this.facingLeft = true;
       this.anims.play("runleft", true);
+      this.walking = true;
     } else if (keys.right.isDown || keys.d.isDown) {
       this.facingLeft = false;
       this.anims.play("runright", true);
+      this.walking = true;
     }
     // IF THE CHARACTER IS GOING UP OR DOWN
     if (this.body.velocity.y !== 0) {
       if (this.facingLeft) {
         this.anims.play("runleft", true);
+        this.walking = true;
       } else {
         this.anims.play("runright", true);
+        this.walking = true;
       }
     }
     // IF THE CHARACTER IS NOT MOVING, GO BACK TO IDLE
     if (this.body.velocity.y === 0 && this.body.velocity.x === 0) {
       if (this.facingLeft) {
         this.anims.play("idleleft", true);
+        this.walking = false;
       } else {
         this.anims.play("idleright", true);
+        this.walking = false;
       }
     }
   }

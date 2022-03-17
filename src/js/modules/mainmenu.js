@@ -48,20 +48,10 @@ export default class MainmenuScene extends Phaser.Scene {
 	})
 	this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
         this.time.delayedCall(1000, () => {
-        // music.pause();
 		this.scene.start('thisGame');
         this.scene.start('Interface');
         this.scene.start('Pause');
         })
 	})
     }
-    update(){
-
-        // if (spacek.isDown) {
-        //     music.pause();
-        //     this.scene.start('thisGame');
-        //     this.scene.start('Interface');
-        //     this.scene.start('Pause');
-        // }
-    };
 }
