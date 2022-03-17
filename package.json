@@ -3,6 +3,9 @@
   "version": "1.1.2",
   "description": "A Phaser 3 Project Template",
   "main": "src/index.js",
+  "engines:":{
+    "node" : "16.13.2"
+  },
   "scripts": {
     "build": "parcel build src/index.html --public-url ./ --no-source-maps ",
     "deploy": "gh-pages -d dist",
