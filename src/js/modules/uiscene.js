@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+
 import HealthBar from "./healthbar.js";
 
 let music;

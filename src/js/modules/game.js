@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+
 import Player from "./player.js";
 import Troll from "./troll.js";
 

@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+
 
 export const config = {
   type: Phaser.AUTO,

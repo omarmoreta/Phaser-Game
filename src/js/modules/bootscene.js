@@ -1,16 +1,15 @@
 import Phaser from 'phaser'
-import logo1 from '../img/logo.png'
-import knight1 from '../img/mc/knight.png'
-import knight2 from '../img/mc/knight_atlas.json'
-import ogre1 from '../img/mobs/troll-enemy.png'
-import ogre2 from '../img/mobs/troll-enemy_atlas.json'
-import map1 from '../img/map/tf_jungle_tileset.png'
-import map2 from '../tilemaps/Map.json'
-import pausebutton from '../img/musicButton/pause-play.png'
-import mainmusic from '../audio/maintitlemusic.mp3'
-import bgmusic from '../audio/backgroundMusic.wav'
-import evilsfx from '../audio/evil.mp3'
-import walksfx from '../audio/walk.wav'
+import logo1 from 'url:../img/logo.png'
+import knight1 from 'url:../img/mc/knight.png'
+import knight2 from 'url:../img/mc/knight_atlas.json'
+import ogre1 from 'url:../img/mobs/troll-enemy.png'
+import ogre2 from 'url:../img/mobs/troll-enemy_atlas.json'
+import map1 from 'url:../img/map/tf_jungle_tileset.png'
+import map2 from 'url:../tilemaps/Map.json'
+import pausebutton from 'url:../img/musicButton/pause-play.png'
+import mainmusic from 'url:../audio/maintitlemusic.mp3'
+import bgmusic from 'url:../audio/backgroundMusic.wav'
+import evilsfx from 'url:../audio/evil.mp3'
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
@@ -90,7 +89,6 @@ export default class BootScene extends Phaser.Scene {
         this.load.audio("maintitlemusic", mainmusic);
         this.load.audio("backgroundMusic", bgmusic);
         this.load.audio("evil", evilsfx)
-        this.load.audio("walking", walksfx)
     }
     create(){
     this.cameras.main.fadeOut(1000, 0, 0, 0);

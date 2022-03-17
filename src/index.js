@@ -1,4 +1,4 @@
-import Phaser from 'phaser'
+
 
 import {config} from './js/config.js'
 import MyGame from "./js/modules/game.js"

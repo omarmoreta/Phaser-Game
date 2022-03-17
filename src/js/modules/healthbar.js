@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+
 
 export default class HealthBar {
     constructor(scene,x,y,health){
