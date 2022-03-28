@@ -25,7 +25,7 @@ module.exports = merge(base, {
       }),
     ],
   },
-  plugina: [
+  plugins: [
     new CopyPlugin({
       patterns: [{ from: "./src/assets", to: "src/assets" }],
     }),
